@@ -4,6 +4,9 @@ from selenium.webdriver.common.by import By
 
 
 def bypass_yandex_images_captcha():
+    """this func checks website for special error page and tries to find capcha pass button in html code, after that clicks on it and waits for page to update. if it didnt work pulls 
+    out an error message.
+    """
     try:
         captcha_button = browser.find_element(By.CLASS_NAME, "CheckboxCaptcha-Button")
         captcha_button.click()
@@ -32,12 +35,3 @@ for url in url1, url2:
     for image_div in image_divs:
         image_link = image_div.find_element(By.TAG_NAME, "img").get_property("src")
         print(image_link, end="\n")
-
-# image = cv2.imread(path_to_file)   прочтение изображения из файла, path_to_file - путь до файла-изображения
-# cv2.imwrite(path_to_save_image, image)   сохранение изображения по заданному пути, например, path_to_folder/image_name.jpg
-
-# print(image.shape)  # распечатать размер прочитанного изображения
-
-# инструкции для просмотра изображения
-# cv2.imshow(window_name, image)
-# cv2.waitKey(0)
